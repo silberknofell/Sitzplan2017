@@ -1,0 +1,25 @@
+<form #newSusForm="ngForm"
+      (ngSubmit)="addSus(newSusForm); newSusForm.reset()"
+      class="vcenter"
+>
+  <input name="nachname"
+         ngModel
+         required
+         placeholder="Nachname"
+         [focus]="myFocusEmitter"
+  />
+  <input name="anzeigename"
+         #anzeigename="ngModel"
+         ngModel
+         required
+         [isNewName]="nameList"
+         placeholder="Anzeigename"
+  />
+  <span *ngIf="anzeigename.hasError('nameInUse')"><strong>Name doppelt !</strong></span>
+  <span *ngIf="!anzeigename.hasError('nameInUse')">
+  <button [disabled]="!newSusForm.valid">
+    <span [ngClass]="{'check': newSusForm.valid, 'check-disabled': !newSusForm.valid }"></span>
+  </button>
+  hinzufügen
+    </span>
+</form>

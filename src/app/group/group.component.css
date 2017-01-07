@@ -1,0 +1,24 @@
+table {
+
+  margin-top: 12px;
+}
+
+tr:nth-child(even) {
+  background-color: #8fffd6;
+}
+tr:nth-child(odd) {
+  background-color: #ffb1e8;
+}
+tr:hover {
+  background-color: #ffffff;
+}
+tr {
+  transition: background-color 300ms;
+  counter-increment: nr;
+}
+td {
+  padding: 0px 5px;
+}
+tr td.number::after {
+  content: counter(nr);
+}

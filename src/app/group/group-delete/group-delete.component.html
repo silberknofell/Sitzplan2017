@@ -1,0 +1,13 @@
+  <span class="delete" (click)="deleteGroupToggle()">Gruppe löschen</span>
+  <div *ngIf="deleteGroup">
+    <p><strong>Achtung: <br/>Dies löscht die Gruppe {{name}} und alle in ihr enthaltenen Schüler. Das kann nicht
+      rückgängig gemacht werden.</strong></p>
+    <p> Bitte geben Sie den Namen der zu löschenden Gruppe noch einmal in das Textfeld ein und drücken dann die
+      ENTF-Taste. </p>
+    <input type="text"
+           placeholder="Lösche Gruppe"
+           (keydown)="keyDownFunction($event)"
+           [(ngModel)]=eingabeName
+    />
+  </div>
+

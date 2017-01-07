@@ -1,0 +1,8 @@
+input {
+  margin-right: 10px;
+}
+span.check, span.check-disabled {
+  vertical-align: middle;
+  margin-left: -20px;
+  margin-right: -10px;
+}

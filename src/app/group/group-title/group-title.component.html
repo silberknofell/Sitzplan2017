@@ -1,0 +1,26 @@
+<div class="group-title">
+  <form class="newGroupName vcenter"
+        #newGroupNameForm="ngForm"
+        (ngSubmit)="saveNewGroupName(newGroupNameForm)"
+  >
+    <span class="title">{{name}}</span>
+    <input type="text"
+           placeholder="geänderter Gruppenname"
+           ngModel
+           name="newName"
+           #newname="ngModel"
+           required
+           [isNewName]="groupList"
+           [focus]="myFocusEmitter"
+    />
+    <span *ngIf="newname.hasError('nameInUse')"><strong>Gruppe existiert bereits</strong></span>
+    <button type="submit">
+      <span
+        *ngIf="newname.valid"
+        [ngClass]="{'check': newname.valid, 'check-disabled': !newname.valid }"></span>
+    </button>
+  </form>
+</div>
+<group-delete [name]=name
+              (onDeleteGroup)="passDeleteEvent($event)"
+></group-delete>

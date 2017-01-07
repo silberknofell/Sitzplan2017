@@ -1,0 +1,18 @@
+<group-title [name]="gruppe.bezeichnung"
+             (onNewGroupName)="onNewGroupName($event)"
+             (onDeleteGroup)="onDeleteGroup($event)">
+</group-title>
+<sus-neu (onNewSus)="onNewSus($event)" [nameList]="anzeigenamen"></sus-neu>
+<table>
+  <tr class="content" *ngFor="let sus of susList">
+    <td class="number"></td>
+    <td>{{sus.getLongName()}}</td>
+    <td>{{sus.getShortName()}}</td>
+    <td>
+      <button (click)="deleteSus(sus.id)">
+        <span class="delete"></span>
+      </button>
+    </td>
+  </tr>
+
+</table>

@@ -1,0 +1,18 @@
+<div class="vcenter">
+  <div class="title">{{groupName}}</div>
+  <span class="edit" (click)="editGroup()">ändern</span>
+</div>
+<div class="plan-list">
+  <ul>
+    <li *ngFor="let plan of plaene">
+      <div class="plan-item">
+        Nr. {{plan.nr}} <br />in  {{plan.raum}}
+      </div>
+    </li>
+  </ul>
+  <ul>
+    <li class="neuer-plan" (click)="newPlanClick()">
+      <div class="plan-item">neuer<br /> Plan</div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,48 @@
+span.titel {
+  font-size: 250%;
+}
+
+div.planflaeche {
+  background-color: #ffb540;
+  transition: width 200ms, height 200ms;
+  position: relative;
+}
+
+div.cell {
+  position: absolute;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: left 500ms, top 500ms;
+}
+div.cell:hover {
+  background-color: #8fffd6;
+}
+div.cell.markiert {
+  border: 2px dotted red;
+}
+
+div.tisch {
+  background-color: #cccccc;
+  border: 1px solid #4170cd;
+  z-index: 10;
+}
+div.tisch.fest {
+  background-color: #999999;
+}
+div.tisch.fest:hover {
+  background-color: #57AD8B;
+}
+
+div.cell.lager {
+  background-color: #be90b7;
+}
+div.cell.lager:hover {
+  background-color: #916a8a;
+}
+
+div.tafel {
+  background-color: #00ec00;
+}

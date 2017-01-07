@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: sans-serif;
+}
+
+span {
+  margin: 0px 10px;
+  text-align: center;
+}
+
+span.home {
+  content: url("assets/home.png");
+  height: 40px;
+}
+
+span.home:hover {
+  content: url("assets/home_hover.png");
+}
+span.edit {
+  content: url("assets/edit.png");
+  height: 25px;
+}
+
+span.edit:hover {
+  content: url("assets/edit_hover.png");
+}
+
+span.delete {
+  content: url("assets/trash-b.png");
+  height: 25px;
+}
+
+span.delete:hover {
+  content: url("assets/trash-b_hover.png");
+}
+
+span.check {
+  content: url("assets/checkmark.png");
+  height: 25px;
+}
+
+span.check:hover {
+  content: url("assets/checkmark_hover.png");
+}
+span.check-disabled {
+  content: url("assets/checkmark_disabled.png");
+  height: 25px;
+}
+
+strong {
+  color:red;
+}
+
+input {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+button {
+  background-color: transparent;
+  border-width: 0px;
+  margin-left: 0px;
+}
+.errortext {
+  color: darkred;
+}
+
+.vcenter {
+  display: flex;
+  align-items: center;
+}
+
+.no-select {
+  user-select: none;
+}

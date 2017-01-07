@@ -1,0 +1,32 @@
+<div class="group-select">
+  <h3>{{title}}</h3>
+  <ul>
+    <li *ngFor="let group of gruppen" (click)="onSelect(group)">
+      {{group.bezeichnung}}
+    </li>
+    <li (click)="onNewGroupToggle()" class="add-group"></li>
+  </ul>
+  <form *ngIf="newGroupToggle"
+        #newGroupForm="ngForm"
+        (ngSubmit)="saveNewGroup(newGroupForm); newGroupForm.reset();"
+        class="vcenter"
+  >
+    <input type="text"
+           placeholder="neue Gruppe"
+           ngModel
+           name="newGroupName"
+           #name="ngModel"
+           required
+           urlSafe
+           [isNewName]="gruppenNamen"
+    />
+    <span *ngIf="name.hasError('nameInUse')"><strong>Gruppe existiert bereits</strong></span>
+    <span
+      *ngIf="name.hasError('illegalCharacter')"><strong>Erlaubte Zeichen: Buchstaben, Ziffern, Bindestrich, Leerzeichen</strong></span>
+    <button type="submit">
+      <span
+        *ngIf="name.valid"
+        [ngClass]="{'check': name.valid, 'check-disabled': !name.valid }"></span>
+    </button>
+  </form>
+</div>

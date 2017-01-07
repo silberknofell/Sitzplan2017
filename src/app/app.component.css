@@ -1,0 +1,13 @@
+div.app-title {
+  margin-bottom: 30px;
+  border-bottom: 1px solid lightgray;
+}
+
+a.active {
+  visibility: hidden;
+}
+h1 {
+  display: inline-block;
+  margin: 0px 30px;
+  vertical-align: text-bottom;
+}

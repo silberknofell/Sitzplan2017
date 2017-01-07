@@ -157,6 +157,7 @@ export class PlanComponent implements OnInit {
       }
       this.markedCell.i = newI;
       this.markedCell.j = newJ;
+      this.layoutService.setMaxIJ(this._plan.tische);
     }
   }
 

@@ -19,7 +19,7 @@ li {
 
 }
 
-div.plan-item:hover, li.neuer-plan:hover {
+div.plan-item:hover {
   background-color: #7ad3d9;
   cursor: pointer;
 }
@@ -35,10 +35,7 @@ div.plan-item {
   padding: 10px;
   background-color: #73a4d2;
   border-radius: 15px;
-  transition: background-color 300ms, color 300ms; margin-bottom: ;
+  transition: background-color 300ms, color 300ms;
 }
 
-li.neuer-plan {
-  color: #084a42;
-  background-color: #91b6ff;
-}
+

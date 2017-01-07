@@ -4,7 +4,8 @@
 </div>
 <div class="plan-list">
   <ul>
-    <li *ngFor="let plan of plaene">
+    <li *ngFor="let plan of plaene"
+        (click) = onPlanSelected(plan)>
       <div class="plan-item">
         Nr. {{plan.nr}} <br />in  {{plan.raum}}
       </div>

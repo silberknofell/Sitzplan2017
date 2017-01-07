@@ -54,4 +54,8 @@ export class PlanSelectComponent implements OnInit {
 
     this.planService.buildNewPlan(this.groupId);
   }
+
+  onPlanSelected(plan: Plan) {
+    this.routerService.navigateToPlan(plan.id);
+  }
 }

@@ -18,6 +18,7 @@ import { PlanComponent } from './plan/plan.component';
 import {RouterService} from "./services/router-service";
 import {PlanService} from "./services/plan-service";
 import {PlanLayoutService} from "./services/plan-layout-service";
+import { PlanTitelComponent } from './plan/plan-titel/plan-titel.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
     FocusDirective,
     GroupDeleteComponent,
     PlanSelectComponent,
-    PlanComponent
+    PlanComponent,
+    PlanTitelComponent
   ],
   imports: [
     BrowserModule,

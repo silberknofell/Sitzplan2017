@@ -1,5 +1,5 @@
-
-  <span class="titel">{{plan && plan.gruppe}}</span> Plan Nr. {{plan && plan.nr}} in Raum {{plan && plan.raum}}
+<plan-titel
+  *ngIf="plan" [plan] = "plan"></plan-titel>
 
 <div class="planflaeche"
      [style.width.px]="layoutService.planWidth"

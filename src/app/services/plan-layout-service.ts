@@ -83,8 +83,8 @@ export class PlanLayoutService {
 
   getEmptyCells(): ICell[] {
     let emptyCells = [];
-    for (let i = 1; i <= this.maxI; i++) {
-      for (let j = 1; j <= this.maxJ; j++) {
+    for (let i = 1; i <= this.maxI+1; i++) {
+      for (let j = 1; j <= this.maxJ+1; j++) {
         emptyCells.push(new Cell(i, j));
       }
     }

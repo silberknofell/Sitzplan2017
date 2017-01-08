@@ -64,12 +64,13 @@ export class PlanComponent implements OnInit {
   save() {
     this.planService.savePlan(this.plan).subscribe(res => alert('Plan gespeichert'));
   }
+
   saveAs() {
-    this.plan.id=0;
-    this.plan.nr=0;
+    this.plan.id = 0;
+    this.plan.nr = 0;
     this.planService.savePlan(this.plan).subscribe(res => {
-      this.plan.id=res.planId;
-      this.plan.nr=res.planNr;
+      this.plan.id = res.planId;
+      this.plan.nr = res.planNr;
       this.routerService.navigateToPlan(res.planId);
     });
   }
@@ -81,7 +82,10 @@ export class PlanComponent implements OnInit {
 
   deletePlan() {
     this.planService.deletePlan(this._plan)
-      .subscribe(() => {alert('Plan gelöscht'); this.toPlanSelect()})
+      .subscribe(() => {
+        alert('Plan gelöscht');
+        this.toPlanSelect()
+      })
   }
 
   uClick() {
@@ -95,6 +99,7 @@ export class PlanComponent implements OnInit {
     this.buildViewCells();
     this.planTischAnordnung.nextGruppenGroesse();
   }
+
   getGruppenGroesse() {
     if (this.planTischAnordnung) {
       return this.planTischAnordnung.getGruppenGroesse();
@@ -102,6 +107,7 @@ export class PlanComponent implements OnInit {
       return 0;
     }
   }
+
   getReihenGroesse() {
     if (this.planTischAnordnung) {
       return this.planTischAnordnung.getReihenGroesse();
@@ -162,13 +168,13 @@ export class PlanComponent implements OnInit {
       }
       this.markedCell.i = newI;
       this.markedCell.j = newJ;
-    this.buildViewCells();
+      this.buildViewCells();
     }
   }
 
   private newTisch(i: number, j: number) {
-    let tisch = new Tisch(i, j);
-    this._plan.tische.push(tisch);
+
+    this._plan.addTisch(i, j);
     this.planTischAnordnung = new PlanTischAnordnung({tische: this._plan.tische});
     this.buildViewCells();
   }
@@ -177,8 +183,7 @@ export class PlanComponent implements OnInit {
     if (tisch.sus && tisch.sus.id) {
       alert('Der Tisch kann nicht entfernt werden, weil er belegt ist');
     } else {
-      let index = this._plan.tische.indexOf(tisch);
-      this._plan.tische.splice(index, 1);
+      this._plan.moveToLager(tisch);
     }
     this.planTischAnordnung = new PlanTischAnordnung({tische: this._plan.tische});
     this.buildViewCells();

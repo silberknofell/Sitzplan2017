@@ -16,14 +16,30 @@
   </div>
 </div>
 <div class="vcenter">
-  <button (click)="layoutService.toggleViewDirection()">Drehe</button>
-  <button (click)="save()">Überschreiben</button>
-  <button (click)="saveAs()">Als neu speichern</button>
-  <button (click)="uClick()">U-Form</button>
-  <button (click)="gruppenClick()">Gruppen ({{getGruppenGroesse()}})</button>
-  <button (click)="reihenClick()">Reihen ({{getReihenGroesse()}})</button>
-  <button (click)="toPlanSelect()">anderer Plan</button>
-  <img class="delete-plan"
-       src="assets/trash-b.png"
-       (click)="deletePlan()">
+<button (click)="layoutService.toggleViewDirection()">Drehe</button>
+<button (click)="save()">Überschreiben</button>
+<button (click)="saveAs()">Als neu speichern</button>
+<button (click)="uClick()">U-Form</button>
+<button (click)="gruppenClick()">Gruppen ({{getGruppenGroesse()}})</button>
+<button (click)="reihenClick()">Reihen ({{getReihenGroesse()}})</button>
+<button (click)="toPlanSelect()">anderer Plan</button>
+<img class="delete-plan" src="assets/trash-b.png">
+</div>
+<div>
+  <h3>Tipps:</h3>
+  <ul>
+    <li>Tippen auf zwei Tische vertauscht.</li>
+    <li>Tippen auf Tisch und leere Zelle verschiebt den Tisch.</li>
+    <li>Zweimal Tippen auf einen Tisch schraubt ihn am Boden fest / löst ihn wieder.</li>
+    <li>Aus dem Lager kann man leere Tische hinzufügen, in das Lager Tische entfernen.</li>
+    <li>Tippen auf Tafel lost neu aus. </li>
+    <li>"Drehe" wechselt zwischen Lehrer- und Schülerperspektive.</li>
+    <li>"Überschreiben" speichert Änderungen des aktuellen Plans.</li>
+    <li>"Als neu speichern" speichert Plan neu ab und lässt den alten Plan unverändert.</li>
+    <li>"U-Form" ordnet die Tische in U-Form an.</li>
+    <li>"Gruppen" lost Gruppen aus. Mehrfach klicken für andere Gruppengröße.</li>
+    <li>"Reihen" ordnet die Tische in Reihen an. Mehrfach klicken für andere Gruppengröße.</li>
+    <li>"anderer Plan" führt zurück zur Plan-Auswahl..</li>
+    <li>Der Mülleimer löscht den aktuellen Plan. ACHTUNG! Das kann nicht rückgängig gemacht werden.</li>
+  </ul>
 </div>

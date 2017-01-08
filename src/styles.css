@@ -22,28 +22,19 @@ a {
   text-decoration: none;
 }
 
-span.delete {
-  content: url("assets/trash-b.png");
-  height: 25px;
-}
-
-span.delete:hover {
-  content: url("assets/trash-b_hover.png");
-}
-
 strong {
   color:red;
 }
 
 input {
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 button {
   background-color: transparent;
-  border-width: 0px;
-  margin-left: 0px;
+  border-width: 0;
+  margin-left: 0;
 }
 .errortext {
   color: darkred;
@@ -56,4 +47,10 @@ button {
 
 .no-select {
   user-select: none;
+}
+
+ul {
+  list-style-type: square;
+  color: #ff566c;
+  line-height: 150%;
 }

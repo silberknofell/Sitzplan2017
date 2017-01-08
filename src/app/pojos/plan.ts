@@ -1,6 +1,14 @@
 import {Tisch} from "./tisch";
 import {Sus} from "./sus";
 export class Plan {
+  get tische(): Tisch[] {
+    return this._tische.filter(t => t.i>0 && t.j>0);
+  }
+  set tische(value: Tisch[]) {
+    this._tische = value;
+  }
+
+  private _tische: Tisch[] = [];
   id: number = 0;
   gruppe_id: number;
   gruppe: string;
@@ -8,23 +16,45 @@ export class Plan {
   start: string = "";
   stop: string = "";
   nr: number = 0;
-  tische: Tisch[] = [];
+  lagerTisch: Tisch;
 
-  constructor(s) {
-    this.id = s.id;
-    this.gruppe_id = s.gruppe_id;
-    this.gruppe = s.gruppe;
-    this.raum = s.raum;
-    this.start = s.start;
-    this.stop = s.stop;
-    this.nr = s.nr;
-    this.tische = s.tische.map(t => {
+  constructor(sqlPlan) {
+    this.id = sqlPlan.id;
+    this.gruppe_id = sqlPlan.gruppe_id;
+    this.gruppe = sqlPlan.gruppe;
+    this.raum = sqlPlan.raum;
+    this.start = sqlPlan.start;
+    this.stop = sqlPlan.stop;
+    this.nr = sqlPlan.nr;
+    this._tische = sqlPlan.tische.map(t => {
       let tisch = new Tisch(t.i, t.j);
       tisch.classes = t.classes;
       tisch.sus = new Sus(t.sus);
       return tisch;
     });
+    this.addLagerTisch();
   }
+
+  private addLagerTisch() {
+      this.lagerTisch=new Tisch(0, 0);
+      this._tische.push(this.lagerTisch);
+  }
+
+  addTisch(i: number, j:number) {
+    this.lagerTisch.i=i;
+    this.lagerTisch.j=j;
+    this.addLagerTisch();
+  }
+
+  moveToLager(tisch: Tisch) {
+    let index = this._tische.indexOf(this.lagerTisch);
+    this._tische.splice(index, 1);
+    tisch.i = 0;
+    tisch.j = 0;
+    this.lagerTisch=tisch;
+  }
+
+
 
   getsqlPlan() {
     let tische = this.tische.map(t => {

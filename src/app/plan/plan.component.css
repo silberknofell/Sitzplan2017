@@ -39,6 +39,7 @@ div.tisch.fest:hover {
 
 div.cell.lager {
   background-color: #be90b7;
+  z-index: 10;
 }
 div.cell.lager:hover {
   background-color: #916a8a;
@@ -52,6 +53,7 @@ button {
   background-color: #999999;
   margin: 10px 20px;
   border-radius: 8px;
+  transition: background-color 200ms;
 }
  button:hover {
    background-color: #cccccc;

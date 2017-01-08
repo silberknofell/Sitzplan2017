@@ -173,7 +173,6 @@ export class PlanComponent implements OnInit {
   }
 
   private newTisch(i: number, j: number) {
-
     this._plan.addTisch(i, j);
     this.planTischAnordnung = new PlanTischAnordnung({tische: this._plan.tische});
     this.buildViewCells();
@@ -202,6 +201,7 @@ export class PlanComponent implements OnInit {
     tafel.j = 0;
     tafel.i = (this.layoutService.maxI + 1) / 2;
     this.viewCells =
-      this.layoutService.getEmptyCells().concat(this._plan.tische).concat(lager).concat(tafel);
+      this.layoutService.getEmptyCells().concat(this._plan._tische).concat(lager).concat(tafel);
+                                                //hier _tische, da der Lagertisch mit dazugehört
   }
 }

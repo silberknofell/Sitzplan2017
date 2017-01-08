@@ -2,13 +2,14 @@ import {Tisch} from "./tisch";
 import {Sus} from "./sus";
 export class Plan {
   get tische(): Tisch[] {
-    return this._tische.filter(t => t.i>0 && t.j>0);
+    return this._tische.filter(t => t.i > 0 && t.j > 0);
   }
+
   set tische(value: Tisch[]) {
     this._tische = value;
   }
 
-  private _tische: Tisch[] = [];
+  _tische: Tisch[] = [];
   id: number = 0;
   gruppe_id: number;
   gruppe: string;
@@ -16,7 +17,7 @@ export class Plan {
   start: string = "";
   stop: string = "";
   nr: number = 0;
-  lagerTisch: Tisch;
+  private lagerTisch: Tisch;
 
   constructor(sqlPlan) {
     this.id = sqlPlan.id;
@@ -36,14 +37,18 @@ export class Plan {
   }
 
   private addLagerTisch() {
-      this.lagerTisch=new Tisch(0, 0);
-      this._tische.push(this.lagerTisch);
+    this.lagerTisch = new Tisch(0, 0);
+    this._tische.push(this.lagerTisch);
   }
 
-  addTisch(i: number, j:number) {
-    this.lagerTisch.i=i;
-    this.lagerTisch.j=j;
+  addTisch(i: number, j: number) {
+    this.lagerTisch.i = i;
+    this.lagerTisch.j = j;
     this.addLagerTisch();
+  }
+
+  isLagertisch(tisch:Tisch) :boolean {
+    return tisch.i==0 && tisch.j==0;
   }
 
   moveToLager(tisch: Tisch) {
@@ -51,9 +56,8 @@ export class Plan {
     this._tische.splice(index, 1);
     tisch.i = 0;
     tisch.j = 0;
-    this.lagerTisch=tisch;
+    this.lagerTisch = tisch;
   }
-
 
 
   getsqlPlan() {
@@ -76,7 +80,7 @@ export class Plan {
     };
   }
 
-  static newPlan(groupId:number): Plan {
+  static newPlan(groupId: number): Plan {
     return new Plan({
       id: 0,
       gruppe_id: groupId,

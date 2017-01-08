@@ -3,6 +3,12 @@ body {
   font-family: sans-serif;
 }
 
+@media print {
+  body {
+    visibility: collapse;
+  }
+}
+
 span {
   margin: 0px 10px;
   text-align: center;

@@ -18,11 +18,25 @@ div.cell {
   box-sizing: border-box;
   transition: left 500ms, top 500ms;
 }
+@media print {
+  div.cell {
+    visibility: visible;
+  }
+  div.cell.lager-tisch {
+    visibility: hidden;
+  }
+  div.tafel {
+    font-size: 25px;
+    color: green;
+    background-color: lightgrey;
+  }
+}
+
 div.cell:hover {
   background-color: #8fffd6;
 }
 div.cell.markiert {
-  border: 2px dotted red;
+  border: 3px dotted red;
 }
 
 div.tisch {
@@ -41,6 +55,13 @@ div.cell.lager {
   background-color: #be90b7;
   z-index: 10;
 }
+
+@media print {
+  div.cell.lager {
+    visibility: hidden;
+  }
+}
+
 div.cell.lager:hover {
   background-color: #916a8a;
 }

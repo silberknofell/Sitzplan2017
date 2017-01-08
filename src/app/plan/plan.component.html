@@ -6,6 +6,7 @@
      [style.height.px]="layoutService.planHeight">
   <div *ngFor="let cell of viewCells"
        [ngClass]="cell.classes"
+       [class.lager-tisch]="plan.isLagertisch(cell)"
        [style.left.px]="layoutService.x(cell)"
        [style.top.px]="layoutService.y(cell)"
        [style.width.px]="layoutService.cellWidth"

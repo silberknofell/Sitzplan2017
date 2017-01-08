@@ -5,3 +5,9 @@ div {
 .titel {
   font-size: 200%;
 }
+
+@media print {
+  div.plan-titel {
+    visibility: visible;
+  }
+}

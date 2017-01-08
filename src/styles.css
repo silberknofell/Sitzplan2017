@@ -8,21 +8,18 @@ span {
   text-align: center;
 }
 
-span.home {
-  content: url("assets/home.png");
-  height: 40px;
-}
-
-span.home:hover {
-  content: url("assets/home_hover.png");
-}
-span.edit {
-  content: url("assets/edit.png");
+img {
   height: 25px;
 }
 
-span.edit:hover {
-  content: url("assets/edit_hover.png");
+img:hover {
+  transition: opacity 200ms;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 span.delete {
@@ -32,19 +29,6 @@ span.delete {
 
 span.delete:hover {
   content: url("assets/trash-b_hover.png");
-}
-
-span.check {
-  content: url("assets/checkmark.png");
-  height: 25px;
-}
-
-span.check:hover {
-  content: url("assets/checkmark_hover.png");
-}
-span.check-disabled {
-  content: url("assets/checkmark_disabled.png");
-  height: 25px;
 }
 
 strong {

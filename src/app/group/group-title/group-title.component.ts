@@ -11,6 +11,7 @@ export class GroupTitleComponent implements OnInit {
   @Input() name: string;
   @Output() onNewGroupName = new EventEmitter<string>();
   @Output() onDeleteGroup = new EventEmitter<string>();
+  @Output() onNewPlan = new EventEmitter<string>();
 
   groupList: string[] = [];
   myFocusEmitter = new EventEmitter<boolean>()
@@ -28,6 +29,10 @@ export class GroupTitleComponent implements OnInit {
       this.onNewGroupName.emit(form.value.newName);
       form.reset();
     }
+  }
+
+  newPlan() {
+    this.onNewPlan.emit();
   }
 
   passDeleteEvent(name: string) {

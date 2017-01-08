@@ -16,10 +16,11 @@
          placeholder="Anzeigename"
   />
   <span *ngIf="anzeigename.hasError('nameInUse')"><strong>Name doppelt !</strong></span>
-  <span *ngIf="!anzeigename.hasError('nameInUse')">
-  <button [disabled]="!newSusForm.valid">
-    <span [ngClass]="{'check': newSusForm.valid, 'check-disabled': !newSusForm.valid }"></span>
-  </button>
+  <span class="vcenter">
+    <img *ngIf="newSusForm.valid"
+         (click)="newSusForm.ngSubmit.emit()"
+         src="assets/plus.png"
+    />
   hinzufügen
     </span>
 </form>

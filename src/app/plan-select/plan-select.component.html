@@ -1,6 +1,6 @@
 <div class="vcenter">
   <div class="title">{{groupName}}</div>
-  <span class="edit" (click)="editGroup()">ändern</span>
+  <img src="assets/edit.png" (click)="editGroup()">bearbeiten
 </div>
 <div class="plan-list">
   <ul>
@@ -12,8 +12,10 @@
     </li>
   </ul>
   <ul>
-    <li class="neuer-plan" (click)="newPlanClick()">
-      <div class="plan-item">neuer<br /> Plan</div>
+    <li class="neuer-plan"
+        *ngIf="plaene.length==0"
+        (click)="newPlanClick()">
+      <div class="plan-item">Plan <br /> erstellen</div>
     </li>
   </ul>
 </div>

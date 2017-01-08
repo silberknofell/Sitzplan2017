@@ -4,6 +4,7 @@ import {Gruppe} from "../pojos/gruppe";
 import {Sus} from "../pojos/sus";
 import {RouterService} from "../services/router-service";
 import {ActivatedRoute} from "@angular/router";
+import {PlanService} from "../services/plan-service";
 @Component({
   selector: 'group',
   templateUrl: './group.component.html',
@@ -35,7 +36,10 @@ export class GroupComponent implements OnInit {
     this.anzeigenamen = value.map(sus => sus.name);
   }
 
-  constructor(private groupService:GroupService, private routerService: RouterService, private route: ActivatedRoute) {
+  constructor(private groupService:GroupService,
+              private routerService: RouterService,
+              private route: ActivatedRoute,
+              private planService: PlanService) {
     route.params.subscribe((p) => this.setName(p['name']));
   }
 
@@ -75,5 +79,9 @@ export class GroupComponent implements OnInit {
     this.groupService.deleteGroup(name).subscribe(
       () => this.routerService.navigateToHome()
     );
+  }
+
+  onNewPlan() {
+    this.planService.buildNewPlan(this.gruppe.id);
   }
 }

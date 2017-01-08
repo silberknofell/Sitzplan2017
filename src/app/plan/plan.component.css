@@ -3,7 +3,8 @@ span.titel {
 }
 
 div.planflaeche {
-  background-color: #ffb540;
+  background-color: rgba(177, 255, 134, 0.73);
+  border-radius: 8px;
   transition: width 200ms, height 200ms;
   position: relative;
 }
@@ -46,4 +47,21 @@ div.cell.lager:hover {
 div.tafel {
   background-color: #00ec00;
 }
+button {
+  height: 50px;
+  background-color: #999999;
+  margin: 10px 20px;
+  border-radius: 8px;
+}
+ button:hover {
+   background-color: #cccccc;
+ }
 
+ div.delete-container {
+   display: inline;
+ }
+
+ img.delete-plan {
+   height: 40px;
+   margin-left: 20px;
+ }

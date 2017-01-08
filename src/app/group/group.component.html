@@ -1,6 +1,7 @@
 <group-title [name]="gruppe.bezeichnung"
              (onNewGroupName)="onNewGroupName($event)"
-             (onDeleteGroup)="onDeleteGroup($event)">
+             (onDeleteGroup)="onDeleteGroup($event)"
+             (onNewPlan)="onNewPlan($event)">
 </group-title>
 <sus-neu (onNewSus)="onNewSus($event)" [nameList]="anzeigenamen"></sus-neu>
 <table>
@@ -9,9 +10,7 @@
     <td>{{sus.getLongName()}}</td>
     <td>{{sus.getShortName()}}</td>
     <td>
-      <button (click)="deleteSus(sus.id)">
-        <span class="delete"></span>
-      </button>
+        <img (click)="deleteSus(sus.id)" src="assets/trash-b.png">
     </td>
   </tr>
 

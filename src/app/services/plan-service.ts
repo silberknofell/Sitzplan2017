@@ -61,4 +61,8 @@ export class PlanService {
       .subscribe(res => this.routerService.navigateToPlan(res.planId));
   }
 
+  deletePlan(plan: Plan) {
+    let url = this.url + 'plan/' + plan.id;
+    return this.http.delete(url).map(res => res.json());
+  }
 }

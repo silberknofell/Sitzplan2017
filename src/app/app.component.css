@@ -11,3 +11,7 @@ h1 {
   margin: 0px 30px;
   vertical-align: text-bottom;
 }
+
+img.home {
+  height: 40px;
+}

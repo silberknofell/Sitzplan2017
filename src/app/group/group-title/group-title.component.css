@@ -9,3 +9,18 @@ div.group-title {
 }
 
 
+
+div.plan-item:hover {
+  background-color: #7ad3d9;
+  cursor: pointer;
+}
+
+div.plan-item {
+  display: inline-block;
+  color: #333333;
+  margin: 0px 10px 0px 0px;
+  padding: 10px;
+  background-color: #73a4d2;
+  border-radius: 15px;
+  transition: background-color 300ms, color 300ms;
+}

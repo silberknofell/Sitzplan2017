@@ -23,10 +23,7 @@
     <span *ngIf="name.hasError('nameInUse')"><strong>Gruppe existiert bereits</strong></span>
     <span
       *ngIf="name.hasError('illegalCharacter')"><strong>Erlaubte Zeichen: Buchstaben, Ziffern, Bindestrich, Leerzeichen</strong></span>
-    <button type="submit">
-      <span
-        *ngIf="name.valid"
-        [ngClass]="{'check': name.valid, 'check-disabled': !name.valid }"></span>
-    </button>
+
+      <img *ngIf="name.valid" src="assets/checkmark.png" (click)="newGroupForm.ngSubmit.emit()" />
   </form>
 </div>

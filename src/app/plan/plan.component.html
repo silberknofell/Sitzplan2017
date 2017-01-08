@@ -1,5 +1,5 @@
 <plan-titel
-  *ngIf="plan" [plan] = "plan"></plan-titel>
+  *ngIf="plan" [plan]="plan"></plan-titel>
 
 <div class="planflaeche"
      [style.width.px]="layoutService.planWidth"
@@ -10,11 +10,12 @@
        [style.top.px]="layoutService.y(cell)"
        [style.width.px]="layoutService.cellWidth"
        [style.height.px]="layoutService.cellHeight"
-       (click) = "onCellClick(cell)"
+       (click)="onCellClick(cell)"
   >
     <span class="no-select">{{cell.text}}</span>
   </div>
 </div>
+<div class="vcenter">
   <button (click)="layoutService.toggleViewDirection()">Drehe</button>
   <button (click)="save()">Überschreiben</button>
   <button (click)="saveAs()">Als neu speichern</button>
@@ -22,3 +23,7 @@
   <button (click)="gruppenClick()">Gruppen ({{getGruppenGroesse()}})</button>
   <button (click)="reihenClick()">Reihen ({{getReihenGroesse()}})</button>
   <button (click)="toPlanSelect()">anderer Plan</button>
+  <img class="delete-plan"
+       src="assets/trash-b.png"
+       (click)="deletePlan()">
+</div>

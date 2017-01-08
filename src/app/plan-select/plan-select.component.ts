@@ -51,8 +51,6 @@ export class PlanSelectComponent implements OnInit {
     this.groupService.getSusFromGroupId(this.groupId)
       .subscribe(sus => this.planService
           .buildNewPlan(this.groupId));
-
-    this.planService.buildNewPlan(this.groupId);
   }
 
   onPlanSelected(plan: Plan) {

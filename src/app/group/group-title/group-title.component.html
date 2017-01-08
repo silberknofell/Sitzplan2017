@@ -3,22 +3,26 @@
         #newGroupNameForm="ngForm"
         (ngSubmit)="saveNewGroupName(newGroupNameForm)"
   >
+    <div class="plan-item" (click)="newPlan()">Plan <br /> erstellen</div>
     <span class="title">{{name}}</span>
     <input type="text"
-           placeholder="geänderter Gruppenname"
+           placeholder="neuer Gruppenname"
            ngModel
            name="newName"
            #newname="ngModel"
            required
+           urlSafe
            [isNewName]="groupList"
            [focus]="myFocusEmitter"
     />
     <span *ngIf="newname.hasError('nameInUse')"><strong>Gruppe existiert bereits</strong></span>
-    <button type="submit">
-      <span
-        *ngIf="newname.valid"
-        [ngClass]="{'check': newname.valid, 'check-disabled': !newname.valid }"></span>
-    </button>
+    <span
+      *ngIf="newname.hasError('illegalCharacter')"><strong>Erlaubte Zeichen: Buchstaben, Ziffern, Bindestrich, Leerzeichen</strong></span>
+
+    <img *ngIf="newname.valid"
+         src="assets/edit.png"
+         (click)="newGroupNameForm.ngSubmit.emit()"
+    />
   </form>
 </div>
 <group-delete [name]=name

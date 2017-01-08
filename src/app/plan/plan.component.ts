@@ -79,6 +79,11 @@ export class PlanComponent implements OnInit {
       .subscribe(group => this.routerService.navigateToPlanSelect(group.bezeichnung));
   }
 
+  deletePlan() {
+    this.planService.deletePlan(this._plan)
+      .subscribe(() => {alert('Plan gelöscht'); this.toPlanSelect()})
+  }
+
   uClick() {
     this.planTischAnordnung.setzeU();
     this.buildViewCells();
@@ -157,7 +162,7 @@ export class PlanComponent implements OnInit {
       }
       this.markedCell.i = newI;
       this.markedCell.j = newJ;
-      this.layoutService.setMaxIJ(this._plan.tische);
+    this.buildViewCells();
     }
   }
 

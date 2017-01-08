@@ -12,7 +12,7 @@ export class GroupDeleteComponent implements OnInit {
   eingabeName: string;
   deleteGroup: boolean;
 
-  constructor(private groupService: GroupService) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -24,12 +24,12 @@ export class GroupDeleteComponent implements OnInit {
   }
 
   keyDownFunction(event) {
-    if (event.keyCode == 46) {
+    if (event.keyCode == 13) {
       if (this.eingabeName == this.name) {
         console.log("Lösche Gruppe " + this.name);
         this.onDeleteGroup.emit(this.name);
       } else {
-        alert("Namen stimmt nicht. Es wird nichts gelöscht.");
+        alert("Name stimmt nicht. Es wird nichts gelöscht.");
       }
     }
   }

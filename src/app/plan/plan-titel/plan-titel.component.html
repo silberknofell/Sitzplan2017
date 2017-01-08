@@ -1,0 +1,17 @@
+<div>
+<span class="titel">{{plan.gruppe}}</span> Plan Nr. {{plan.nr}} in Raum
+<input type="text"
+       [(ngModel)] = "plan.raum"
+       placeholder="Raum"
+/>
+  ab
+<input type="text"
+       [(ngModel)] = "plan.start"
+       placeholder="Startdatum"
+/>
+  bis
+<input type="text"
+       [(ngModel)] = "plan.stop"
+       placeholder="Enddatum"
+/>
+</div>

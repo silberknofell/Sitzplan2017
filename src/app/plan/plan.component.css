@@ -16,20 +16,7 @@ div.cell {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  transition: left 500ms, top 500ms;
-}
-@media print {
-  div.cell {
-    visibility: visible;
-  }
-  div.cell.lager-tisch {
-    visibility: hidden;
-  }
-  div.tafel {
-    font-size: 25px;
-    color: green;
-    background-color: lightgrey;
-  }
+  transition: left 500ms, top 500ms, background-color 200ms;
 }
 
 div.cell:hover {
@@ -54,12 +41,6 @@ div.tisch.fest:hover {
 div.cell.lager {
   background-color: #be90b7;
   z-index: 10;
-}
-
-@media print {
-  div.cell.lager {
-    visibility: hidden;
-  }
 }
 
 div.cell.lager:hover {

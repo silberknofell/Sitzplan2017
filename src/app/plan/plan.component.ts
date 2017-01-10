@@ -28,7 +28,7 @@ export class PlanComponent implements OnInit {
 
   set plan(plan: Plan) {
     this._plan = plan;
-    this.planTischAnordnung = new PlanTischAnordnung({tische: plan.tische});
+    this.planTischAnordnung = new PlanTischAnordnung({tische: plan.getTischeOhneLager()});
     this.buildViewCells();
   }
 
@@ -58,7 +58,7 @@ export class PlanComponent implements OnInit {
   }
 
   shuffle() {
-    PlanEditService.shuffle(this._plan.tische.filter(t => !t.is('fest')));
+    PlanEditService.shuffle(this._plan.getTischeOhneLager().filter(t => !t.is('fest')));
   }
 
   save() {
@@ -78,6 +78,9 @@ export class PlanComponent implements OnInit {
   toPlanSelect() {
     this.groupService.getGroupFromId(this.plan.gruppe_id)
       .subscribe(group => this.routerService.navigateToPlanSelect(group.bezeichnung));
+  }
+  toViewPlan() {
+    this.routerService.navigateToViewPlan(this.planId);
   }
 
   deletePlan() {
@@ -174,7 +177,7 @@ export class PlanComponent implements OnInit {
 
   private newTisch(i: number, j: number) {
     this._plan.addTisch(i, j);
-    this.planTischAnordnung = new PlanTischAnordnung({tische: this._plan.tische});
+    this.planTischAnordnung = new PlanTischAnordnung({tische: this._plan.getTischeOhneLager()});
     this.buildViewCells();
   }
 
@@ -184,7 +187,7 @@ export class PlanComponent implements OnInit {
     } else {
       this._plan.moveToLager(tisch);
     }
-    this.planTischAnordnung = new PlanTischAnordnung({tische: this._plan.tische});
+    this.planTischAnordnung = new PlanTischAnordnung({tische: this._plan.getTischeOhneLager()});
     this.buildViewCells();
   }
 
@@ -201,7 +204,7 @@ export class PlanComponent implements OnInit {
     tafel.j = 0;
     tafel.i = (this.layoutService.maxI + 1) / 2;
     this.viewCells =
-      this.layoutService.getEmptyCells().concat(this._plan._tische).concat(lager).concat(tafel);
+      this.layoutService.getEmptyCells().concat(this._plan.tische).concat(lager).concat(tafel);
                                                 //hier _tische, da der Lagertisch mit dazugehört
   }
 }

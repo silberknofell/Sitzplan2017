@@ -19,6 +19,7 @@ import {RouterService} from "./services/router-service";
 import {PlanService} from "./services/plan-service";
 import {PlanLayoutService} from "./services/plan-layout-service";
 import { PlanTitelComponent } from './plan/plan-titel/plan-titel.component';
+import { ViewPlanComponent } from './view-plan/view-plan.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'home', component: GroupSelectComponent},
   {path: ':name/edit', component: GroupComponent},
   {path: ':name/plan', component: PlanSelectComponent},
-  {path: 'plan/:plan_id', component: PlanComponent}
+  {path: 'plan/:plan_id', component: PlanComponent},
+  {path: 'viewplan/:plan_id', component: ViewPlanComponent}
 ];
 
 @NgModule({
@@ -42,7 +44,8 @@ const routes: Routes = [
     GroupDeleteComponent,
     PlanSelectComponent,
     PlanComponent,
-    PlanTitelComponent
+    PlanTitelComponent,
+    ViewPlanComponent
   ],
   imports: [
     BrowserModule,

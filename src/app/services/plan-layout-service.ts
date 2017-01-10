@@ -1,6 +1,15 @@
 import {ICell} from "../pojos/icell";
 import {Cell} from "../pojos/cell";
 export class PlanLayoutService {
+  get border(): number {
+    return this._border;
+  }
+
+  set border(value: number) {
+    this._border = value;
+    this.calcCellWidth();
+    this.calcCellHeight();
+  }
   get planWidth() {
     return this._planWidth;
   }
@@ -48,11 +57,11 @@ export class PlanLayoutService {
 
 
   private calcCellHeight() {
-    this._cellHeight = this._planHeight / (this._maxJ + 2) - this._distance;
+    this._cellHeight = this._planHeight / (this._maxJ + 2*this._border) - this._distance;
   }
 
   private calcCellWidth() {
-    this._cellWidth = this._planWidth / (this._maxI + 2) - this._distance;
+    this._cellWidth = this._planWidth / (this._maxI + 2*this.border) - this._distance;
   }
 
   private _maxI: number = 7;
@@ -62,6 +71,7 @@ export class PlanLayoutService {
   private _cellWidth = 80;
   private _cellHeight = 40;
   private _distance = 2;
+  private _border: number;
   private teacherView: boolean = true;
 
   constructor() {
@@ -69,15 +79,16 @@ export class PlanLayoutService {
     this.maxJ = 7;
     this.planWidth = 1000;
     this.planHeight = 400;
+    this.border=1;
   }
 
   x(cell: ICell) {
-    let i = this.teacherView ? cell.i : 1 + this.maxI - cell.i;
+    let i = this.teacherView ? cell.i - 1 + this._border : this.border + this.maxI - cell.i;
     return i * (this.cellWidth + this._distance);
   }
 
   y(cell: ICell) {
-    let j = this.teacherView ? 1 + this.maxJ - cell.j : cell.j;
+    let j = this.teacherView ? this.border + this.maxJ - cell.j : cell.j - 1 + this._border;
     return j * (this.cellHeight + this._distance);
   }
 

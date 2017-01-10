@@ -1,15 +1,7 @@
 import {Tisch} from "./tisch";
 import {Sus} from "./sus";
 export class Plan {
-  get tische(): Tisch[] {
-    return this._tische.filter(t => t.i > 0 && t.j > 0);
-  }
-
-  set tische(value: Tisch[]) {
-    this._tische = value;
-  }
-
-  _tische: Tisch[] = [];
+  tische: Tisch[] = [];
   id: number = 0;
   gruppe_id: number;
   gruppe: string;
@@ -27,7 +19,7 @@ export class Plan {
     this.start = sqlPlan.start;
     this.stop = sqlPlan.stop;
     this.nr = sqlPlan.nr;
-    this._tische = sqlPlan.tische.map(t => {
+    this.tische = sqlPlan.tische.map(t => {
       let tisch = new Tisch(t.i, t.j);
       tisch.classes = t.classes;
       tisch.sus = new Sus(t.sus);
@@ -36,9 +28,13 @@ export class Plan {
     this.addLagerTisch();
   }
 
+  getTischeOhneLager() :Tisch[]{
+    return this.tische.filter(t => !this.isLagerTisch(t));
+  }
+
   private addLagerTisch() {
     this.lagerTisch = new Tisch(0, 0);
-    this._tische.push(this.lagerTisch);
+    this.tische.push(this.lagerTisch);
   }
 
   addTisch(i: number, j: number) {
@@ -47,13 +43,13 @@ export class Plan {
     this.addLagerTisch();
   }
 
-  isLagertisch(tisch:Tisch) :boolean {
+  isLagerTisch(tisch:Tisch) :boolean {
     return tisch.i==0 && tisch.j==0;
   }
 
   moveToLager(tisch: Tisch) {
-    let index = this._tische.indexOf(this.lagerTisch);
-    this._tische.splice(index, 1);
+    let index = this.tische.indexOf(this.lagerTisch);
+    this.tische.splice(index, 1);
     tisch.i = 0;
     tisch.j = 0;
     this.lagerTisch = tisch;
@@ -61,7 +57,7 @@ export class Plan {
 
 
   getsqlPlan() {
-    let tische = this.tische.map(t => {
+    let tische = this.getTischeOhneLager().map(t => {
       let susId = t.sus ? t.sus.id : 0;
       return {
         i: t.i, j: t.j, classes: t.classes, sus_id: susId

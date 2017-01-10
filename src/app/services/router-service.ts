@@ -21,4 +21,8 @@ export class RouterService {
   navigateToPlan(planId: number) {
     this.router.navigateByUrl('/plan/' + planId);
   }
+
+  navigateToViewPlan(planId: number) {
+    this.router.navigateByUrl('/viewplan/' + planId);
+  }
 }
